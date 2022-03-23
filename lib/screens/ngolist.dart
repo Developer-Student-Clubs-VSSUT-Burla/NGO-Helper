@@ -91,7 +91,7 @@ class NgoItem extends StatelessWidget {
             height: 100,
             width: MediaQuery.of(context).size.width * 0.65,
             child: Image.asset(
-              'assests/Thumbnail.jpg',
+              'lib/assets/images/Thumbnail.jpg',
               fit: BoxFit.fitWidth,
             ),
           ),

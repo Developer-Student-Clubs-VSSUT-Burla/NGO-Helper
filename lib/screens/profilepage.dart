@@ -48,47 +48,77 @@ class ProfileState extends State<Profile> {
                     )
                   ],
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(radius: 25, backgroundImage: AssetImage('assests/Thumbnail.jpg'),),
-                    Divider(color: Colors.black,height: 30,thickness: 10,),
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundImage: AssetImage('lib/assets/images/Thumbnail.jpg'),
+                    ),
+                    Divider(
+                      color: Colors.black,
+                      height: 30,
+                      thickness: 10,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('Dhairya Joshi',style: TextStyle(color: Colors.white,fontSize: 20),),
-                        Text('joshidhairaya2002@gmail.com',style: TextStyle(color: Colors.white),)
+                        Text(
+                          'Dhairya Joshi',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        Text(
+                          'joshidhairaya2002@gmail.com',
+                          style: TextStyle(color: Colors.white),
+                        )
                       ],
                     )
                   ],
                 ),
-                SizedBox(height: 20,),
-
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(25)),
-                    color: Color(0x55ffffff)
-                  ),
+                      borderRadius: BorderRadius.all(Radius.circular(25)),
+                      color: Color(0x55ffffff)),
                   height: 250,
                   padding: EdgeInsets.all(15),
-                  width: MediaQuery.of(context).size.width*0.8,
+                  width: MediaQuery.of(context).size.width * 0.8,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Bio',style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),),
-                          IconButton(onPressed: null, icon: Icon(Icons.edit,color: Colors.white,)),
+                          Text(
+                            'Bio',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          IconButton(
+                              onPressed: null,
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              )),
                         ],
                       ),
-                      SizedBox(height: 15,),
-                      Text('Some sample Bio',style: TextStyle(color: Colors.white,fontSize: 18),)
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        'Some sample Bio',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      )
                     ],
                   ),
                 )
-
               ],
             ),
           ),
@@ -109,10 +139,9 @@ class GalleryImage extends StatelessWidget {
         color: Colors.white,
       ),
       child: Image.asset(
-        'assests/Thumbnail.jpg',
+        'lib/assets/images/Thumbnail.jpg',
         fit: BoxFit.cover,
       ),
     );
   }
 }
-
