@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # flutter_app
 
 A new Flutter project.
@@ -16,5 +15,3 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 =======
-# NGO-Helper
->>>>>>> c5b6b98717e0c23dfc2df79b2f086090bb3eef1b
