@@ -62,7 +62,7 @@ class _LogInState extends State<LogIn> {
                     textInputAction: TextInputAction.done,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(20.0)),
-                      hintText: 'Pasword',
+                      hintText: 'Password',
                     ),
                   obscureText: true,
                 )
@@ -109,6 +109,7 @@ class _LogInState extends State<LogIn> {
         barrierDismissible: false,
         builder: (context) => Center(child: CircularProgressIndicator()),
     );
+
     try
     {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -119,6 +120,7 @@ class _LogInState extends State<LogIn> {
     {
       print(e);
     }
+
     navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }

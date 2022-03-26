@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/Auth.dart';
 import 'package:flutter_app/screens/MyAppState.dart';
-import 'package:flutter_app/screens/try.dart';
+
 
 
 void main() async  {
@@ -27,7 +27,8 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // navigatorKey: navigatorKey;
+    navigatorKey: navigatorKey;
+
     return Scaffold(
       body: StreamBuilder<User?>(
           stream:FirebaseAuth.instance.authStateChanges(),

@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class SignUp extends StatefulWidget {
   final VoidCallback onClickedSignIn;
 
@@ -35,26 +37,26 @@ class _SignUpState extends State<SignUp> {
                   child: Text("Signup",style: TextStyle(fontWeight:FontWeight.bold,
                       fontSize: 40.0,color: Colors.teal),textAlign: TextAlign.center,)
               ),
-              Container(
-                padding: EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 0.0),
-                child:TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius:BorderRadius.circular(20.0)),
-                      hintText: 'Enter Fullname',
-                    )
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
-                child:TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius:BorderRadius.circular(20.0)),
-                      hintText: 'Enter Username',
-                    )
-                ),
-              ),
+              // Container(
+              //   padding: EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 0.0),
+              //   child:TextField(
+              //       decoration: InputDecoration(
+              //         border: OutlineInputBorder(
+              //             borderRadius:BorderRadius.circular(20.0)),
+              //         hintText: 'Enter Fullname',
+              //       )
+              //   ),
+              // ),
+              // Container(
+              //   padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+              //   child:TextField(
+              //       decoration: InputDecoration(
+              //         border: OutlineInputBorder(
+              //             borderRadius:BorderRadius.circular(20.0)),
+              //         hintText: 'Enter Username',
+              //       )
+              //   ),
+              // ),
               Container(
                 padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
                 child:TextField(
@@ -121,8 +123,11 @@ class _SignUpState extends State<SignUp> {
   }
   Future signup() async{
 
-    final isValid = formKey.currentState!.validate();
-    if(!isValid) return ;
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Center(child: CircularProgressIndicator()),
+    );
     try
     {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -133,6 +138,8 @@ class _SignUpState extends State<SignUp> {
     {
       print(e);
     }
+
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 
 }

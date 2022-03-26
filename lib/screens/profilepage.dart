@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -106,7 +107,20 @@ class ProfileState extends State<Profile> {
                               icon: Icon(
                                 Icons.edit,
                                 color: Colors.white,
-                              )),
+                              )
+                          ),
+                          ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size.fromRadius(15),
+                              primary: Colors.white,
+                              onPrimary: Colors.black45,
+                            ),
+                            icon: Icon(Icons.arrow_back,size: 12),
+                            label: Text('Sign Out ',
+                                style: TextStyle(fontSize: 12)
+                            ),
+                            onPressed:() =>FirebaseAuth.instance.signOut(),
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -116,6 +130,7 @@ class ProfileState extends State<Profile> {
                         'Some sample Bio',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       )
+
                     ],
                   ),
                 )
