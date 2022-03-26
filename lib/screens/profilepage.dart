@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -10,7 +12,6 @@ class Profile extends StatefulWidget {
 class ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
         margin: EdgeInsets.only(top: 10),
         decoration: BoxDecoration(
@@ -37,6 +38,7 @@ class ProfileState extends State<Profile> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.ideographic,
+                  
                   children: [
                     Text(
                       'Your Gallery',
