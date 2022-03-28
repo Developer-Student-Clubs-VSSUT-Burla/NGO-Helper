@@ -1,17 +1,40 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-void main() {
-  runApp(MaterialApp(
-    home: Myapp(),
-  ));
-}
-class Myapp extends StatelessWidget {
-  const Myapp({Key? key}) : super(key: key);
+
+import '../main.dart';
+
+class LogIn extends StatefulWidget {
+  final VoidCallback onClickedSignedUp;
+
+  const LogIn({
+    Key? key,
+    required this.onClickedSignedUp,
+  }): super (key: key);
+
 
   @override
+  State<LogIn> createState() => _LogInState();
+}
+
+class _LogInState extends State<LogIn> {
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  @override
+
+  void dispose(){
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title:Text("Login/Signup"),
+          title:Text("Login"),
           backgroundColor: Colors.teal,
         ),
         body:ListView(
@@ -24,23 +47,31 @@ class Myapp extends StatelessWidget {
             Container(
                 padding: EdgeInsets.all(30.0),
                 child:TextField(
+                    controller: emailController,
+                    cursorColor: Colors.white,
+                    textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius:BorderRadius.circular(20.0)),
-                      hintText: 'Username',
+                      hintText: 'Email',
                     )
-                )),
+                )
+            ),
             Container(
                 padding: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
                 child:TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius:BorderRadius.circular(20.0)),
-                      hintText: 'Pasword',
-                    )
-                )),
+                  controller: passwordController,
+                  textInputAction: TextInputAction.done,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(borderRadius:BorderRadius.circular(20.0)),
+                    hintText: 'Password',
+                  ),
+                  obscureText: true,
+                )
+            ),
             Container(
               height: 50.0,
               margin: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
-              child:RaisedButton(onPressed: (){},
+              child:RaisedButton(onPressed: signin,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
                 child:Text("Login",style:TextStyle(color:Colors.white,
@@ -48,23 +79,49 @@ class Myapp extends StatelessWidget {
                     fontSize: 20.0),textAlign: TextAlign.center,),
                 color: Colors.teal,),
             ),
-            Container(
-                padding: EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
-                child:Text("New User?",style: TextStyle(fontSize: 17.0,color: Colors.teal),
-                  textAlign: TextAlign.center,)
-            ),
-            Container(
-              child: TextButton.icon(
-                onPressed: (){},
-                icon:Icon(
-                  Icons.add_box_sharp,
-                  color: Colors.teal,
-                ),label: Text("Create Account",textAlign:TextAlign.center,
-                  style:TextStyle(color: Colors.teal,fontSize: 17.0)),
+            SizedBox(height: 60.0),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                    style: TextStyle(color: Colors.black45,fontSize: 18.0),
+                    text: 'No account? ',
+                    children: [
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap=widget.onClickedSignedUp,
+                        text: 'Sign Up',
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          color: Colors.teal,
+                          fontSize: 17.0,
+                        ),
+                      ),
+                    ]
+                ),
               ),
-            ),
+            )
           ],
         )
     );
+  }
+  Future signin() async{
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => Center(child: CircularProgressIndicator()),
+    );
+
+    try
+    {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim()
+      );
+    }on FirebaseAuthException catch (e)
+    {
+      print(e);
+    }
+
+    navigatorKey.currentState!.popUntil((route) => route.isFirst);
   }
 }
