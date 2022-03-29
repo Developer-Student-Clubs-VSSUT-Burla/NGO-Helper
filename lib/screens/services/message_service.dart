@@ -101,7 +101,8 @@ class MessageService {
       Message(
         sender: user8,
         time: '13:25',
-        text: 'NGO is actually up and running, they will be your "eyes-and-ears" network on the ground!',
+        text:
+            'NGO is actually up and running, they will be your "eyes-and-ears" network on the ground!',
       ),
       Message(
         sender: user2,
@@ -111,17 +112,20 @@ class MessageService {
       Message(
         sender: user4,
         time: '12:11',
-        text: 'Many NGOs are actually eager to talk to people, to showcase their work.',
+        text:
+            'Many NGOs are actually eager to talk to people, to showcase their work.',
       ),
       Message(
         sender: user5,
         time: '16:03',
-        text: 'My organisation is struggling to keep afloat. Is there anyway you can can assist ?',
+        text:
+            'My organisation is struggling to keep afloat. Is there anyway you can can assist ?',
       ),
       Message(
         sender: user9,
         time: '11:38',
-        text: 'I came up with an idea of opening up an organization with the aim of reducing on the number of street kids',
+        text:
+            'I came up with an idea of opening up an organization with the aim of reducing on the number of street kids',
       ),
     ];
   }
@@ -132,17 +136,20 @@ class MessageService {
       Message(
         sender: null,
         time: '18:42',
-        text: 'Establishing an NGO can be a challenging process, especially at the beginning. You will need resources, knowledge, skills, and support right from the beginning of your journey.',
+        text:
+            'Establishing an NGO can be a challenging process, especially at the beginning. You will need resources, knowledge, skills, and support right from the beginning of your journey.',
       ),
       Message(
         sender: sender,
         time: '18:39',
-        text: 'Though it us difficult to attract donor funding, we were fortunate to get funds to built our centre for 120 kids and not only impact all their families but an entire community.',
+        text:
+            'Though it us difficult to attract donor funding, we were fortunate to get funds to built our centre for 120 kids and not only impact all their families but an entire community.',
       ),
       Message(
         sender: sender,
         time: '18:39',
-        text: 'I am passionate about starting a local NGO that will address parenting issues in my community?',
+        text:
+            'I am passionate about starting a local NGO that will address parenting issues in my community?',
       ),
       Message(
         sender: null,
@@ -152,7 +159,8 @@ class MessageService {
       Message(
         sender: sender,
         time: '18:35',
-        text: 'I have been reading your articles and find them educative and timely. ',
+        text:
+            'I have been reading your articles and find them educative and timely. ',
       ),
     ];
   }

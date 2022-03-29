@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, prefer_const_literals_to_create_immutables
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -28,10 +28,10 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
         //   title: Text('Ngo app'),
         // ),
         body: Container(
-          color: Color(0xffffffff),
+          color: const Color(0xffffffff),
           width: double.infinity,
           height: double.infinity,
-          padding: EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 5),
+          padding: const EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 5),
           child: Column(
             children: [
               Row(
@@ -39,16 +39,16 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 children: [
                   IconButton(
                     onPressed: onPressed,
-                    icon: Icon(Icons.airplay),
+                    icon: const Icon(Icons.airplay),
                     color: Colors.teal,
                   ),
-                  Text(
+                  const Text(
                     'Hy, Buddy',
                     style: TextStyle(fontSize: 24),
                   ),
                   IconButton(
                       onPressed: onPressed,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.search_outlined,
                         color: Colors.teal,
                         size: 30,
@@ -60,27 +60,27 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 children: <Widget>[
                   IconButton(
                   onPressed:() =>FirebaseAuth.instance.signOut(),
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.exit_to_app
                       )
                   )
                 ],
               ),
-              JoinCard(),
+              const JoinCard(),
               TabBar(
                 unselectedLabelColor: Colors.black,
                 labelColor: Colors.teal,
                 // ignore: prefer_const_literals_to_create_immutables
                 tabs: [
-                  Tab(
+                  const Tab(
                     icon: Icon(Icons.album_outlined),
                     child: Text('NGOs'),
                   ),
-                  Tab(
+                  const Tab(
                     icon: Icon(Icons.home_filled),
                     child: Text('Home'),
                   ),
-                  Tab(
+                  const Tab(
                     icon: Icon(Icons.person),
                     child: Text('Profile'),
                   )
@@ -91,9 +91,9 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
               Expanded(
                 child: TabBarView(
                   children: [
-                    NgoList(Colors.white, "Your NGOs"),
-                    NgoList(Colors.white, "Nearby NGOs"),
-                    Profile()
+                    const NgoList(Colors.white, "Your NGOs"),
+                    const NgoList(Colors.white, "Nearby NGOs"),
+                    const Profile()
                   ],
                   controller: _tabController,
                 ),
@@ -114,34 +114,34 @@ class JoinCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30, bottom: 10),
-      padding: EdgeInsets.only(top: 20),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(top: 30, bottom: 10),
+      padding: const EdgeInsets.only(top: 20),
+      decoration: const BoxDecoration(
           color: Colors.teal,
           borderRadius: BorderRadius.all(Radius.circular(25))),
       width: MediaQuery.of(context).size.width * 0.8,
       height: 155,
       child: Column(
         children: [
-          Text(
+          const Text(
             'Want to contribute? ',
             style: TextStyle(fontSize: 24, color: Colors.white),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Text(
+          const Text(
             'Join your nearest NGO ',
             style: TextStyle(fontSize: 17, color: Colors.white),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           RaisedButton(
             onPressed: onPressed,
             color: Colors.white,
             textColor: Colors.blue,
-            child: Text('Join Now'),
+            child: const Text('Join Now'),
           )
         ],
       ),

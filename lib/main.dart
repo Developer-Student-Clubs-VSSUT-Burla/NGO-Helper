@@ -1,5 +1,3 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +10,7 @@ void main() async  {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(MyHome());
+  runApp(const MyHome());
 }
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -22,7 +20,7 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) =>MaterialApp(
     navigatorKey: navigatorKey,
     debugShowCheckedModeBanner: false,
-    home: MainPage(),
+    home: const MainPage(),
   );
 }
 
@@ -36,19 +34,19 @@ class MainPage extends StatelessWidget {
           builder: (context, snapshot) {
             if(snapshot.connectionState == ConnectionState.waiting)
             {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
             else if (snapshot.hasError)
             {
-              return Center(child: Text('Something went wrong !'));
+              return const Center(child: Text('Something went wrong !'));
             }
             if(snapshot.hasData)
             {
-              return MyApp();
+              return const MyApp();
             }
             else
             {
-              return AuthPage();
+              return const AuthPage();
             }
           }
       ),
