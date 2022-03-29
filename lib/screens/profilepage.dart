@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,11 +71,11 @@ class ProfileState extends State<Profile> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'Dhairya Joshi',
+                          '${user.displayName}',
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         Text(
-                          'joshidhairaya2002@gmail.com',
+                          '${user.email}',
                           style: TextStyle(color: Colors.white),
                         )
                       ],

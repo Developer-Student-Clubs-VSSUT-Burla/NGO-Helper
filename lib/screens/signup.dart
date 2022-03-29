@@ -21,25 +21,38 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
 
   final formKey = GlobalKey<FormState>();
+  final displayNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title:Text("Signup"),
-          backgroundColor: Colors.teal,
-        ),
+      // appBar: AppBar(
+      //   title:Text("Signup"),
+      //   backgroundColor: Colors.teal,
+      // ),
         body:ListView(
-            padding: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
+            padding: EdgeInsets.fromLTRB(0.0, 150.0, 0.0, 0.0),
             children:<Widget>[
               Container(
                   child: Text("Signup",style: TextStyle(fontWeight:FontWeight.bold,
                       fontSize: 40.0,color: Colors.teal),textAlign: TextAlign.center,)
               ),
-
               Container(
                 padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                child:TextField(
+                    controller: displayNameController,
+                    cursorColor: Colors.white,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius:BorderRadius.circular(20.0)),
+                      hintText: 'Your Name',
+                    )
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(30.0),
                 child:TextField(
                     controller: emailController,
                     cursorColor: Colors.white,
@@ -52,7 +65,7 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                padding: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
                 child:TextField(
                     controller: passwordController,
                     textInputAction: TextInputAction.done,
@@ -115,6 +128,10 @@ class _SignUpState extends State<SignUp> {
           email: emailController.text.trim(),
           password: passwordController.text.trim()
       );
+      // update display name
+      var user = FirebaseAuth.instance.currentUser!;
+      // print(user);
+      user.updateDisplayName(displayNameController.text.trim());
     }on FirebaseAuthException catch (e)
     {
       print(e);

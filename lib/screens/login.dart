@@ -33,10 +33,10 @@ class _LogInState extends State<LogIn> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title:Text("Login"),
-          backgroundColor: Colors.teal,
-        ),
+      // appBar: AppBar(
+      //   title:Text("Login"),
+      //   backgroundColor: Colors.teal,
+      // ),
         body:ListView(
           padding: EdgeInsets.fromLTRB(0.0, 150.0, 0.0, 0.0),
           children: <Widget>[
