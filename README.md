@@ -37,19 +37,13 @@ Contributor: This feature allows the volunteer to fill in the personal details a
 
 ## FUNCTIONALITY AND CONCEPTS USED
 
-1. Material App: An application which uses Material Design. 
-
-2. Firebase: Firebase is a product which developers used to build, manage, and grow their apps easily. It provides cloud storage. It provides services to android, iOS, web and unity.
-
-3. Firestore: Firestore is a NoSQL document database built for high performance and ease of application development. With the Firestore interface has many of the same features as traditional databases.
-
-4. Firebase Authentication: Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports authentication using passwords, phone numbers, popular identity providers like Google, Facebook and Twitter, and more. 
-
-5. Dart: Dart is high-level modern programming language widely used to develop the mobile application, modern web-applications, desktop application using flutter framework.
-
-6. Figma: Figma is an interactive design application that runs in the browser. 
-
-7. Android Studio: Android studio is the official IDE for building android apps. It provides more features to enhance our productivity while making Android Apps.
+1. Material App: An application which uses Material Design. We use this for making our interface to look minimalistic.
+2. Firebase: Firebase is a product which developers used to build, manage, and grow their apps easily. It provides cloud storage. It provides services to android, iOS, web and unity. It allows syncing the real time data all across the devices.
+3. Firestore: Firestore is a NoSQL document database built for high performance and ease of application development. With the Firestore interface has many of the same features as traditional databases. It provides live synchronization and offline support.
+4. Firebase Authentication: Firebase Authentication provides backend services, easy-to-use SDKs, and ready-made UI libraries to authenticate users to your app. It supports authentication using passwords, phone numbers, popular identity providers like Google, Facebook and Twitter, and more. It aims to make secure authentication and makes the sign in experience better for the user.
+5. Dart: Dart is high-level modern programming language widely used to develop the mobile application, modern web-applications, desktop application using flutter framework. It supports all oops concepts.
+6. Figma: Figma is an interactive design application that runs in the browser. It has the ability to build prototypes and test. It has lot of plugins to make the user experience better. 
+7. Android Studio: Android studio is the official IDE for building android apps. It provides more features to enhance our productivity while making Android Apps. It allows us to divide our projects into units of functionality which can be built, test and debug.
 
 ## APPLICATION AND FUTURE SCOPE
 Our app bridges the gap between the good Samaritans and the Non-Profitable Organisation. The Organizers can post important events regarding their organization and willing individuals can take initiative for volunteership. The app is yet to be modified to be used in a broader spectrum.
