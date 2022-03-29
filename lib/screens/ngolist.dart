@@ -2,6 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/models/ngo_model.dart';
+import 'package:flutter_app/screens/services/database_services.dart';
 
 class NgoList extends StatelessWidget {
   Color c;
@@ -18,7 +20,7 @@ class NgoList extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(25)),
         color: c,
       ),
-      padding: EdgeInsets.only(top:15,left: 15,right:15,bottom: 0),
+      padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 0),
       child: Column(
         children: [
           Row(
@@ -40,25 +42,49 @@ class NgoList extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
           Expanded(
-              child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                NgoItem(),
-                SizedBox(
-                  height: 10,
-                ),
-                NgoItem(),
-                SizedBox(height: 10,),
-                NgoItem()
-              ],
+            child: SingleChildScrollView(
+              child: FutureBuilder(
+                future: DatabaseService().getNgos(),
+                builder: (ctx, AsyncSnapshot snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          '${snapshot.error} occured',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      );
+                    } else if (snapshot.hasData) {
+                      return ListView.builder(
+                          itemCount: snapshot.data.length,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (ctx, index) {
+                            NGO ngo = snapshot.data[index];
+                            return Column(
+                              children: [
+                                NgoItem(
+                                    name: ngo.name,
+                                    desc: ngo.desc,
+                                    location: ngo.location,
+                                    pfp: ngo.pfp),
+                                SizedBox(
+                                  height: 10,
+                                )
+                              ],
+                            );
+                          });
+                    }
+                  }
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
             ),
-          )),
-          SizedBox(height: 10,)
+          ),
         ],
       ),
     );
@@ -66,9 +92,16 @@ class NgoList extends StatelessWidget {
 }
 
 class NgoItem extends StatelessWidget {
+  String name, desc, pfp, location;
+
+  NgoItem(
+      {required this.name,
+      required this.desc,
+      required this.pfp,
+      required this.location});
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -90,8 +123,8 @@ class NgoItem extends StatelessWidget {
             ),
             height: 100,
             width: MediaQuery.of(context).size.width * 0.65,
-            child: Image.asset(
-              'lib/assets/images/Thumbnail.jpg',
+            child: Image.network(
+              pfp,
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -99,14 +132,14 @@ class NgoItem extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Name of the organisation',
+            name,
             style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 20,
           ),
           Text(
-            'location',
+            location,
             style: TextStyle(fontSize: 15, color: Colors.grey),
           ),
         ],
