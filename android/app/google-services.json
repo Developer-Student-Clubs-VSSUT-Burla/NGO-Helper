@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "401609614058",
+    "project_id": "ngo-helper-5ab24",
+    "storage_bucket": "ngo-helper-5ab24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401609614058:android:07b05b0aacef4f64506d93",
+        "android_client_info": {
+          "package_name": "com.dhairya.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401609614058-grefshml4i62l4nqpoqt1bt65q1i4knr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV5llKGtfgwWV5Wp014mv0PjwUqTbvLRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401609614058-grefshml4i62l4nqpoqt1bt65q1i4knr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "401609614058-6qtcl9aif4tlbacdrh6msv23kdlfj4qf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ngohelperios.com"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
