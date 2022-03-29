@@ -26,12 +26,12 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title:Text("Signup"),
-          backgroundColor: Colors.teal,
-        ),
+      // appBar: AppBar(
+      //   title:Text("Signup"),
+      //   backgroundColor: Colors.teal,
+      // ),
         body:ListView(
-            padding: EdgeInsets.fromLTRB(0.0, 40.0, 0.0, 0.0),
+            padding: EdgeInsets.fromLTRB(0.0, 150.0, 0.0, 0.0),
             children:<Widget>[
               Container(
                   child: Text("Signup",style: TextStyle(fontWeight:FontWeight.bold,
@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
               ),
 
               Container(
-                padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                padding: EdgeInsets.all(30.0),
                 child:TextField(
                     controller: emailController,
                     cursorColor: Colors.white,
@@ -52,7 +52,7 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                padding: EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
                 child:TextField(
                     controller: passwordController,
                     textInputAction: TextInputAction.done,
