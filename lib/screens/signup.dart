@@ -21,6 +21,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
 
   final formKey = GlobalKey<FormState>();
+  final displayNameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   @override
@@ -37,7 +38,19 @@ class _SignUpState extends State<SignUp> {
                   child: Text("Signup",style: TextStyle(fontWeight:FontWeight.bold,
                       fontSize: 40.0,color: Colors.teal),textAlign: TextAlign.center,)
               ),
-
+              Container(
+                padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),
+                child:TextField(
+                    controller: displayNameController,
+                    cursorColor: Colors.white,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius:BorderRadius.circular(20.0)),
+                      hintText: 'Your Name',
+                    )
+                ),
+              ),
               Container(
                 padding: EdgeInsets.all(30.0),
                 child:TextField(
@@ -115,6 +128,10 @@ class _SignUpState extends State<SignUp> {
           email: emailController.text.trim(),
           password: passwordController.text.trim()
       );
+      // update display name
+      var user = FirebaseAuth.instance.currentUser!;
+      // print(user);
+      user.updateDisplayName(displayNameController.text.trim());
     }on FirebaseAuthException catch (e)
     {
       print(e);
