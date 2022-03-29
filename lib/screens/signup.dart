@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -78,13 +79,14 @@ class _SignUpState extends State<SignUp> {
           Container(
             height: 50.0,
             margin: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0.0),
-            child: RaisedButton(
+            child: ElevatedButton(
               onPressed: signup,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.teal,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20))),
               child: const Text("Continue",
                   style: TextStyle(color: Colors.white, fontSize: 20.0)),
-              color: Colors.teal,
             ),
           ),
           const SizedBox(height: 60.0),
@@ -127,7 +129,9 @@ class _SignUpState extends State<SignUp> {
       // print(user);
       user.updateDisplayName(displayNameController.text.trim());
     } on FirebaseAuthException catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);

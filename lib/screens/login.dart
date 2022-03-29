@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,7 @@ class _LogInState extends State<LogIn> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         // appBar: AppBar(
@@ -117,7 +119,9 @@ class _LogInState extends State<LogIn> {
           email: emailController.text.trim(),
           password: passwordController.text.trim());
     } on FirebaseAuthException catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
 
     navigatorKey.currentState!.popUntil((route) => route.isFirst);

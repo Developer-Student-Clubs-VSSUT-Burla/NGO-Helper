@@ -11,6 +11,7 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
+
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   final user = FirebaseAuth.instance.currentUser!;
   TabController? _tabController;
@@ -31,7 +32,8 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           color: const Color(0xffffffff),
           width: double.infinity,
           height: double.infinity,
-          padding: const EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 5),
+          padding:
+              const EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 5),
           child: Column(
             children: [
               Row(
@@ -59,18 +61,14 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   IconButton(
-                  onPressed:() =>FirebaseAuth.instance.signOut(),
-                      icon: const Icon(
-                        Icons.exit_to_app
-                      )
-                  )
+                      onPressed: () => FirebaseAuth.instance.signOut(),
+                      icon: const Icon(Icons.exit_to_app))
                 ],
               ),
               const JoinCard(),
               TabBar(
                 unselectedLabelColor: Colors.black,
                 labelColor: Colors.teal,
-                // ignore: prefer_const_literals_to_create_immutables
                 tabs: [
                   const Tab(
                     icon: Icon(Icons.album_outlined),

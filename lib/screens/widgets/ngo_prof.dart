@@ -25,7 +25,7 @@ class NGOprof extends StatelessWidget {
           elevation: 0,
         ),
         backgroundColor: Colors.white,
-        body: Body(),
+        body: const Body(),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -94,15 +94,15 @@ class _Body extends State<Body> {
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   "Gallery",
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.teal,
                   ),
                 ),
-                const Text(
+                Text(
                   "See All",
                   style: TextStyle(
                     fontSize: 20.0,
@@ -117,8 +117,8 @@ class _Body extends State<Body> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   "Name of the NGO",
                   style: TextStyle(
                     fontSize: 20.0,
@@ -126,15 +126,15 @@ class _Body extends State<Body> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Icon(
+                Icon(
                   Icons.people,
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
+              children: const [
+                Text(
                   "NGO1",
                   style: TextStyle(
                     fontSize: 20.0,
@@ -142,7 +142,7 @@ class _Body extends State<Body> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Text(
+                Text(
                   "45 members",
                   style: TextStyle(
                     fontSize: 15.0,
@@ -152,12 +152,12 @@ class _Body extends State<Body> {
               ],
             ),
             Row(
-              children: [
-                const Icon(
+              children: const [
+                Icon(
                   Icons.location_on,
                   color: Colors.red,
                 ),
-                const Text(
+                Text(
                   "Location",
                   style: TextStyle(
                     fontSize: 15.0,

@@ -30,7 +30,11 @@ class ProfileState extends State<Profile> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: [GalleryImage(), GalleryImage(), GalleryImage()],
+                    children: const [
+                      GalleryImage(),
+                      GalleryImage(),
+                      GalleryImage()
+                    ],
                   ),
                 ),
                 const SizedBox(
