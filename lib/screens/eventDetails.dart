@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
 
 class EventDetails extends StatefulWidget {
+  String name;
+  String location;
+  String description;
+  String date;
+  String time;
+  String ngo;
+  String image;
+
+  EventDetails({
+    required this.name,
+    required this.location,
+    required this.description,
+    required this.date,
+    required this.time,
+    required this.ngo,
+    required this.image,
+  });
+
   @override
   State<StatefulWidget> createState() {
     return EventDetailsState();
@@ -34,8 +52,8 @@ class EventDetailsState extends State<EventDetails> {
             ),
             height: 200,
             width: double.infinity,
-            child: Image.asset(
-              'lib/assets/images/Thumbnail.jpg',
+            child: Image.network(
+              widget.image,
             ),
           ),
           SizedBox(
@@ -45,11 +63,11 @@ class EventDetailsState extends State<EventDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Sample-Event-Name",
+                widget.name,
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               Text(
-                "DD/MM/YY",
+                widget.date,
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
             ],
@@ -61,14 +79,14 @@ class EventDetailsState extends State<EventDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Location,State",
+                widget.location,
                 style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey,
                     fontStyle: FontStyle.italic),
               ),
               Text(
-                "Hr:Mn:AM",
+                widget.time,
                 style: TextStyle(fontSize: 15, color: Colors.grey),
               ),
             ],
@@ -76,9 +94,13 @@ class EventDetailsState extends State<EventDetails> {
           SizedBox(
             height: 20,
           ),
-          Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            style: TextStyle(fontSize: 15, color: Colors.grey),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Text(
+                widget.description,
+                style: TextStyle(fontSize: 15, color: Colors.black),
+              ),
+            ),
           ),
           SizedBox(
             height: 20,
@@ -91,7 +113,7 @@ class EventDetailsState extends State<EventDetails> {
             height: 10,
           ),
           Text(
-            "Non-Governmental Organization",
+            widget.ngo,
             style: TextStyle(fontSize: 15, color: Colors.grey),
           ),
           SizedBox(
