@@ -102,7 +102,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                     const NgoList(Colors.white, "Nearby NGOs"),
                     const EventList(Colors.white, "Upcoming Events"),
                     const NgoList(Colors.white, "Your NGOs"),
-                    const Profile()
+                    const ProfilePage(),
                   ],
                   controller: _tabController,
                 ),
