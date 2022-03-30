@@ -1,24 +1,22 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screens/models/ngo_model.dart';
+import 'package:flutter_app/screens/services/database_services.dart';
 
 class NgoList extends StatelessWidget {
-  Color c;
-  String name;
+  final Color c;
+  final String name;
 
-  NgoList(this.c, this.name);
+  const NgoList(this.c, this.name, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(25)),
+        borderRadius: const BorderRadius.all(Radius.circular(25)),
         color: c,
       ),
-      padding: EdgeInsets.only(top:15,left: 15,right:15,bottom: 0),
+      padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 0),
       child: Column(
         children: [
           Row(
@@ -26,12 +24,12 @@ class NgoList extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
-              TextButton(
+              const TextButton(
                 child: Text(
                   'See All',
                   style: TextStyle(color: Colors.teal),
@@ -40,25 +38,49 @@ class NgoList extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
           Expanded(
-              child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                NgoItem(),
-                SizedBox(
-                  height: 10,
-                ),
-                NgoItem(),
-                SizedBox(height: 10,),
-                NgoItem()
-              ],
+            child: SingleChildScrollView(
+              child: FutureBuilder(
+                future: DatabaseService().getNgos(),
+                builder: (ctx, AsyncSnapshot snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          '${snapshot.error} occured',
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      );
+                    } else if (snapshot.hasData) {
+                      return ListView.builder(
+                          itemCount: snapshot.data.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (ctx, index) {
+                            NGO ngo = snapshot.data[index];
+                            return Column(
+                              children: [
+                                NgoItem(
+                                    name: ngo.name,
+                                    desc: ngo.desc,
+                                    location: ngo.location,
+                                    pfp: ngo.pfp),
+                                const SizedBox(
+                                  height: 10,
+                                )
+                              ],
+                            );
+                          });
+                    }
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
             ),
-          )),
-          SizedBox(height: 10,)
+          ),
         ],
       ),
     );
@@ -66,48 +88,57 @@ class NgoList extends StatelessWidget {
 }
 
 class NgoItem extends StatelessWidget {
+  final String name, desc, pfp, location;
+
+  const NgoItem(
+      {Key? key,
+      required this.name,
+      required this.desc,
+      required this.pfp,
+      required this.location})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(25)),
         color: Color(0xfff1f1f1),
       ),
       height: 200,
-      padding: EdgeInsets.only(left: 24, right: 5),
+      padding: const EdgeInsets.only(left: 24, right: 5),
       width: MediaQuery.of(context).size.width * 0.8,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(25)),
               color: Colors.transparent,
             ),
             height: 100,
             width: MediaQuery.of(context).size.width * 0.65,
-            child: Image.asset(
-              'lib/assets/images/Thumbnail.jpg',
+            child: Image.network(
+              pfp,
               fit: BoxFit.fitWidth,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(
-            'Name of the organisation',
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            name,
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
-            'location',
-            style: TextStyle(fontSize: 15, color: Colors.grey),
+            location,
+            style: const TextStyle(fontSize: 15, color: Colors.grey),
           ),
         ],
       ),

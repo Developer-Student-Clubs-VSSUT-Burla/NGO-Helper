@@ -179,9 +179,7 @@ class Details extends StatelessWidget {
           children: [
             Expanded(
               child: TextField(
-                onChanged: (value) {
-                  // TODO:
-                },
+                onChanged: (value) {},
                 decoration: const InputDecoration.collapsed(
                   hintText: "Type your message...",
                 ),

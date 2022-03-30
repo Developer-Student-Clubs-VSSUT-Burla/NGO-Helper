@@ -1,55 +1,47 @@
-// ignore_for_file: deprecated_member_use, prefer_const_constructors
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/Auth.dart';
-import 'package:flutter_app/screens/MyState.dart';
+import 'package:flutter_app/screens/auth.dart';
+import 'package:flutter_app/screens/my_state.dart';
 
-
-
-void main() async  {
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MainPage(),
-  )
-  );
+
+  runApp(const MyHome());
 }
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
+class MyHome extends StatelessWidget {
+  const MyHome({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+        navigatorKey: navigatorKey,
+        debugShowCheckedModeBanner: false,
+        home: const MainPage(),
+      );
+}
+
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    navigatorKey: navigatorKey;
-
     return Scaffold(
       body: StreamBuilder<User?>(
-          stream:FirebaseAuth.instance.authStateChanges(),
+          stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
-            if(snapshot.connectionState == ConnectionState.waiting)
-            {
-              return Center(child: CircularProgressIndicator());
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return const Center(child: Text('Something went wrong !'));
             }
-            else if (snapshot.hasError)
-            {
-              return Center(child: Text('Something went wrong !'));
+            if (snapshot.hasData) {
+              return const MyApp();
+            } else {
+              return const AuthPage();
             }
-            if(snapshot.hasData)
-            {
-              return MyApp();
-            }
-            else
-            {
-              return AuthPage();
-            }
-          }
-      ),
+          }),
     );
   }
 }

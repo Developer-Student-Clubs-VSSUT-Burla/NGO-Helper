@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return ProfileState();
@@ -10,17 +11,18 @@ class Profile extends StatefulWidget {
 }
 
 class ProfileState extends State<Profile> {
+  final user = FirebaseAuth.instance.currentUser!;
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 10),
-        decoration: BoxDecoration(
+        margin: const EdgeInsets.only(top: 10),
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(25)),
           color: Colors.teal,
         ),
         width: double.infinity,
         height: double.infinity,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Expanded(
           child: SingleChildScrollView(
             child: Column(
@@ -28,18 +30,21 @@ class ProfileState extends State<Profile> {
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: [GalleryImage(), GalleryImage(), GalleryImage()],
+                    children: const [
+                      GalleryImage(),
+                      GalleryImage(),
+                      GalleryImage()
+                    ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.baseline,
                   textBaseline: TextBaseline.ideographic,
-                  
-                  children: [
+                  children: const [
                     Text(
                       'Your Gallery',
                       style: TextStyle(fontSize: 17, color: Colors.white),
@@ -50,17 +55,18 @@ class ProfileState extends State<Profile> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage('lib/assets/images/Thumbnail.jpg'),
+                      backgroundImage:
+                          AssetImage('lib/assets/images/Thumbnail.jpg'),
                     ),
-                    Divider(
+                    const Divider(
                       color: Colors.black,
                       height: 30,
                       thickness: 10,
@@ -69,33 +75,34 @@ class ProfileState extends State<Profile> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'Dhairya Joshi',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          '${user.displayName}',
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 20),
                         ),
                         Text(
-                          'joshidhairaya2002@gmail.com',
-                          style: TextStyle(color: Colors.white),
+                          '${user.email}',
+                          style: const TextStyle(color: Colors.white),
                         )
                       ],
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(25)),
                       color: Color(0x55ffffff)),
                   height: 250,
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: const [
                           Text(
                             'Bio',
                             style: TextStyle(
@@ -111,10 +118,10 @@ class ProfileState extends State<Profile> {
                               )),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Text(
+                      const Text(
                         'Some sample Bio',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       )
@@ -129,14 +136,15 @@ class ProfileState extends State<Profile> {
 }
 
 class GalleryImage extends StatelessWidget {
+  const GalleryImage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       height: 160,
       width: 120,
-      margin: EdgeInsets.only(right: 5, left: 5),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(right: 5, left: 5),
+      decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(25)),
         color: Colors.white,
       ),
