@@ -13,6 +13,7 @@ class NGOprof extends StatelessWidget {
           title: const Text('NGO Profile Page'),
           centerTitle: true,
           leading: const BackButton(
+
             color: Colors.black,
           ),
           actions: [

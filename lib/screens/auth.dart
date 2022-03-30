@@ -1,5 +1,6 @@
-import 'package:flutter_app/screens/signup.dart';
+
 import 'package:flutter/material.dart';
+import 'package:ngo_helper/screens/signup.dart';
 import 'login.dart';
 
 class AuthPage extends StatefulWidget {

@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/auth.dart';
-import 'package:flutter_app/screens/my_state.dart';
+
+
+import 'package:ngo_helper/screens/auth.dart';
+import 'package:ngo_helper/screens/formdt.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +39,7 @@ class MainPage extends StatelessWidget {
               return const Center(child: Text('Something went wrong !'));
             }
             if (snapshot.hasData) {
-              return const MyApp();
+              return MyApp();
             } else {
               return const AuthPage();
             }

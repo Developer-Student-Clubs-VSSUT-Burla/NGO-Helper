@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screens/models/ngo_model.dart';
-import 'package:flutter_app/screens/services/database_services.dart';
+
+
+import 'package:ngo_helper/screens/models/ngo_model.dart';
+import 'package:ngo_helper/screens/services/database_services.dart';
 
 class NgoList extends StatelessWidget {
   final Color c;
@@ -61,11 +63,16 @@ class NgoList extends StatelessWidget {
                             NGO ngo = snapshot.data[index];
                             return Column(
                               children: [
-                                NgoItem(
-                                    name: ngo.name,
-                                    desc: ngo.desc,
-                                    location: ngo.location,
-                                    pfp: ngo.pfp),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.pushNamed(context, '/ngoprof');
+                                  },
+                                  child: NgoItem(
+                                      name: ngo.name,
+                                      desc: ngo.desc,
+                                      location: ngo.location,
+                                      pfp: ngo.pfp),
+                                ),
                                 const SizedBox(
                                   height: 10,
                                 )
