@@ -61,11 +61,16 @@ class NgoList extends StatelessWidget {
                             NGO ngo = snapshot.data[index];
                             return Column(
                               children: [
-                                NgoItem(
-                                    name: ngo.name,
-                                    desc: ngo.desc,
-                                    location: ngo.location,
-                                    pfp: ngo.pfp),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.pushNamed(context, '/ngoprof');
+                                  },
+                                  child: NgoItem(
+                                      name: ngo.name,
+                                      desc: ngo.desc,
+                                      location: ngo.location,
+                                      pfp: ngo.pfp),
+                                ),
                                 const SizedBox(
                                   height: 10,
                                 )
