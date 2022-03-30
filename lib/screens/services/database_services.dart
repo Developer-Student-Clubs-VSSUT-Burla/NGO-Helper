@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ngo_helper/screens/models/ngo_model.dart';
 
-
 class DatabaseService {
   Future<List<NGO>> getNgos() async {
     List<NGO> ngolist = [];

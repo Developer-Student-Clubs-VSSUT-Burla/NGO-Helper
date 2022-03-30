@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:ngo_helper/screens/profilepage.dart';
 import 'package:ngo_helper/screens/screens/chat_home.dart';
 import 'package:ngo_helper/screens/widgets/ngo_prof.dart';
-
 import 'ngolist.dart';
 
 class MyApp extends StatefulWidget {

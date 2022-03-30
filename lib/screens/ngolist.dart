@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-
 import 'package:ngo_helper/screens/models/ngo_model.dart';
 import 'package:ngo_helper/screens/services/database_services.dart';
 
