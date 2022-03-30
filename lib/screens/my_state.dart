@@ -3,6 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ngo_helper/screens/profilepage.dart';
+import 'package:ngo_helper/screens/screens/chat_home.dart';
+import 'package:ngo_helper/screens/widgets/ngo_prof.dart';
 import 'ngolist.dart';
 
 class MyApp extends StatefulWidget {
@@ -24,6 +26,12 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+          '/': (context) => const MyApp(),
+          '/ngoprof': (context) => const NGOprof(),
+          '/chat' : (context) => const Home(),
+      },
       home: Scaffold(
         // appBar: AppBar(
         //   title: Text('Ngo app'),
