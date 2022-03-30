@@ -50,7 +50,7 @@ class EventDetailsState extends State<EventDetails> {
               borderRadius: BorderRadius.all(Radius.circular(25)),
               color: Colors.transparent,
             ),
-            height: 200,
+            height: 250,
             width: double.infinity,
             child: Image.network(
               widget.image,
@@ -59,65 +59,79 @@ class EventDetailsState extends State<EventDetails> {
           SizedBox(
             height: 10,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                widget.name,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                widget.date,
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              ),
-            ],
+          Text(
+            widget.name,
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 5,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                widget.location,
-                style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey,
-                    fontStyle: FontStyle.italic),
-              ),
-              Text(
-                widget.time,
-                style: TextStyle(fontSize: 15, color: Colors.grey),
-              ),
-            ],
+          Text(
+            widget.location,
+            style: TextStyle(
+                fontSize: 17, color: Colors.grey, fontStyle: FontStyle.italic),
           ),
           SizedBox(
             height: 20,
           ),
           Expanded(
             child: SingleChildScrollView(
-              child: Text(
-                widget.description,
-                style: TextStyle(fontSize: 15, color: Colors.black),
+              child: Center(
+                child: Text(
+                  widget.description,
+                  style: TextStyle(fontSize: 17, color: Colors.black),
+                ),
               ),
             ),
           ),
           SizedBox(
             height: 20,
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Time: ",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "Date: ",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                widget.time,
+                style: TextStyle(fontSize: 17, color: Colors.grey),
+              ),
+              Text(
+                widget.date,
+                style: TextStyle(fontSize: 17, color: Colors.grey),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Text(
             "Organised By:-",
-            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 10,
           ),
           Text(
             widget.ngo,
-            style: TextStyle(fontSize: 15, color: Colors.grey),
+            style: TextStyle(fontSize: 17, color: Colors.grey),
           ),
           SizedBox(
-            height: 20,
+            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -125,7 +139,7 @@ class EventDetailsState extends State<EventDetails> {
               RaisedButton(
                 onPressed: () => {},
                 padding:
-                    EdgeInsets.only(right: 20, left: 20, top: 15, bottom: 15),
+                    EdgeInsets.only(right: 20, left: 20, top: 12, bottom: 12),
                 color: Colors.white,
                 textColor: Colors.blue,
                 child: Text(
@@ -134,6 +148,9 @@ class EventDetailsState extends State<EventDetails> {
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 5,
           ),
         ],
       ),
