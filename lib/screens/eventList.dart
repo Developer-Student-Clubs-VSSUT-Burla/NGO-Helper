@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ngo_helper/screens/models/ngo_model.dart';
+import 'package:ngo_helper/screens/eventDetails.dart';
+import 'package:ngo_helper/screens/models/event_model.dart';
 import 'package:ngo_helper/screens/services/database_services.dart';
-import 'package:ngo_helper/screens/widgets/ngo_prof.dart';
 
-class NgoList extends StatelessWidget {
+class EventList extends StatelessWidget {
   final Color c;
   final String name;
 
-  const NgoList(this.c, this.name, {Key? key}) : super(key: key);
+  const EventList(this.c, this.name, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,7 +42,7 @@ class NgoList extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: FutureBuilder(
-                future: DatabaseService().getNgos(),
+                future: DatabaseService().getEvents(),
                 builder: (ctx, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasError) {
@@ -59,7 +59,7 @@ class NgoList extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.vertical,
                           itemBuilder: (ctx, index) {
-                            NGO ngo = snapshot.data[index];
+                            Event event = snapshot.data[index];
                             return Column(
                               children: [
                                 GestureDetector(
@@ -67,20 +67,27 @@ class NgoList extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => NGOprof(
-                                          name: ngo.name,
-                                          desc: ngo.desc,
-                                          location: ngo.location,
-                                          pfp: ngo.pfp,
+                                        builder: (context) => EventDetails(
+                                          name: event.name,
+                                          location: event.location,
+                                          description: event.description,
+                                          date: event.date,
+                                          time: event.time,
+                                          ngo: event.ngo,
+                                          image: event.image,
                                         ),
                                       ),
                                     );
                                   },
-                                  child: NgoItem(
-                                      name: ngo.name,
-                                      desc: ngo.desc,
-                                      location: ngo.location,
-                                      pfp: ngo.pfp),
+                                  child: EventItem(
+                                    name: event.name,
+                                    location: event.location,
+                                    description: event.description,
+                                    date: event.date,
+                                    time: event.time,
+                                    ngo: event.ngo,
+                                    image: event.image,
+                                  ),
                                 ),
                                 const SizedBox(
                                   height: 10,
@@ -103,16 +110,19 @@ class NgoList extends StatelessWidget {
   }
 }
 
-class NgoItem extends StatelessWidget {
-  final String name, desc, pfp, location;
+class EventItem extends StatelessWidget {
+  final String name, location, description, date, time, ngo, image;
 
-  const NgoItem(
-      {Key? key,
-      required this.name,
-      required this.desc,
-      required this.pfp,
-      required this.location})
-      : super(key: key);
+  const EventItem({
+    Key? key,
+    required this.name,
+    required this.location,
+    required this.description,
+    required this.date,
+    required this.time,
+    required this.ngo,
+    required this.image,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +148,7 @@ class NgoItem extends StatelessWidget {
             height: 100,
             width: MediaQuery.of(context).size.width * 0.65,
             child: Image.network(
-              pfp,
+              image,
               fit: BoxFit.fitWidth,
             ),
           ),

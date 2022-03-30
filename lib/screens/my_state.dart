@@ -2,9 +2,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ngo_helper/screens/eventList.dart';
 import 'package:ngo_helper/screens/profilepage.dart';
 import 'package:ngo_helper/screens/screens/chat_home.dart';
-import 'package:ngo_helper/screens/widgets/ngo_prof.dart';
 import 'ngolist.dart';
 
 class MyApp extends StatefulWidget {
@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   TabController? _tabController;
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     super.initState();
   }
 
@@ -28,9 +28,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-          '/': (context) => const MyApp(),
-          '/ngoprof': (context) => const NGOprof(),
-          '/chat' : (context) => const Home(),
+        '/chat': (context) => const Home(),
       },
       home: Scaffold(
         // appBar: AppBar(
@@ -79,12 +77,16 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                 labelColor: Colors.teal,
                 tabs: [
                   const Tab(
-                    icon: Icon(Icons.album_outlined),
-                    child: Text('NGOs'),
-                  ),
-                  const Tab(
                     icon: Icon(Icons.home_filled),
                     child: Text('Home'),
+                  ),
+                  const Tab(
+                    icon: Icon(Icons.flag),
+                    child: Text('Events'),
+                  ),
+                  const Tab(
+                    icon: Icon(Icons.album_outlined),
+                    child: Text('NGOs'),
                   ),
                   const Tab(
                     icon: Icon(Icons.person),
@@ -97,8 +99,9 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
               Expanded(
                 child: TabBarView(
                   children: [
-                    const NgoList(Colors.white, "Your NGOs"),
                     const NgoList(Colors.white, "Nearby NGOs"),
+                    const EventList(Colors.white, "Upcoming Events"),
+                    const NgoList(Colors.white, "Your NGOs"),
                     const Profile()
                   ],
                   controller: _tabController,
