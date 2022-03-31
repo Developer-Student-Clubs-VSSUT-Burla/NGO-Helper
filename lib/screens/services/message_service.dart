@@ -6,61 +6,61 @@ import '../models/chat_user.dart';
 class MessageService {
   User user1 = User(
     name: 'Sample NGO 1',
-    image: 'images/emoji1.png',
+    image: 'lib/assets/images/emoji1.png',
     color: const Color(0xFFFFE0EC),
   );
 
   User user2 = User(
     name: 'Sample NGO 2',
-    image: 'images/emoji2.png',
+    image: 'lib/assets/images/emoji2.png',
     color: const Color(0xFFBFE9F2),
   );
 
   User user3 = User(
     name: 'Sample NGO 3',
-    image: 'images/emoji3.png',
+    image: 'lib/assets/images/emoji3.png',
     color: const Color(0xFFFFD6C4),
   );
 
   User user4 = User(
     name: 'Sample NGO 4',
-    image: 'images/emoji4.png',
+    image: 'lib/assets/images/emoji4.png',
     color: const Color(0xFFC3C1E6),
   );
 
   User user5 = User(
     name: 'Sample NGO 5',
-    image: 'images/emoji5.png',
+    image: 'lib/assets/images/emoji5.png',
     color: const Color(0xFFFFE0EC),
   );
 
   User user6 = User(
     name: 'Sample NGO 6',
-    image: 'images/emoji6.png',
+    image: 'lib/assets/images/emoji6.png',
     color: const Color(0xFFFFE5A6),
   );
 
   User user7 = User(
     name: 'Sample NGO 7',
-    image: 'images/emoji7.png',
+    image: 'lib/assets/images/emoji7.png',
     color: const Color(0xFFFFE0EC),
   );
 
   User user8 = User(
     name: 'Sample NGO 8',
-    image: 'images/emoji8.png',
+    image: 'lib/assets/images/emoji8.png',
     color: const Color(0xFFFFE0EC),
   );
 
   User user9 = User(
     name: 'Sample NGO 9',
-    image: 'images/emoji9.png',
+    image: 'lib/assets/images/emoji9.png',
     color: const Color(0xFFC3C1E6),
   );
 
   User user10 = User(
     name: 'Sample NGO 10',
-    image: 'images/emoji10.png',
+    image: 'lib/assets/images/emoji10.png',
     color: const Color(0xFFFF95A2),
   );
 
