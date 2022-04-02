@@ -60,7 +60,16 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
                         Icons.search_outlined,
                         color: Colors.teal,
                         size: 30,
-                      ))
+                      )
+                  ),
+                  Container(
+                    child: Text('Sign Out',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15.0
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Row(

@@ -3,6 +3,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../main.dart';
 
@@ -63,6 +64,7 @@ class _ResetBState extends State<ResetB> {
                 onPressed: () {
                   FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text.trim());
                   Navigator.of(context).pop();
+                  showToast();
                 },
                 shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -80,3 +82,10 @@ class _ResetBState extends State<ResetB> {
     );
   }
 }
+
+
+void showToast()=>Fluttertoast.showToast(
+    msg: 'Reset email sent',
+    fontSize: 15.0,
+    gravity: ToastGravity.BOTTOM,
+);
